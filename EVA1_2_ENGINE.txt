@@ -1,0 +1,48 @@
+Microsoft Windows [Versión 10.0.17134.950]
+(c) 2018 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Jorge>mysqlsh
+MySQL Shell 8.0.17
+
+Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \connect --mc jorge@JORGE-DLA
+Creating a Classic session to 'jorge@JORGE-DLA'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 9
+Server version: 8.0.17 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  JORGE-DLA:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  JORGE-DLA:3306 ssl  SQL > create database prueba;
+Query OK, 1 row affected (0.1000 sec)
+ MySQL  JORGE-DLA:3306 ssl  SQL > create table prueba engine = memory;
+ERROR: 1046 (3D000): No database selected
+ MySQL  JORGE-DLA:3306 ssl  SQL > use prueba
+Default schema set to `prueba`.
+Fetching table and column names from `prueba` for auto-completion... Press ^C to stop.
+ MySQL  JORGE-DLA:3306 ssl  prueba  SQL > create table prueba engine = memory;
+ERROR: 1113 (42000): A table must have at least 1 column
+ MySQL  JORGE-DLA:3306 ssl  prueba  SQL > create table prueba
+                                       ->
+                                       -> nombre varchar(50)
+                                       -> engine = memory;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nombre varchar(50)
+engine = memory' at line 2
+ MySQL  JORGE-DLA:3306 ssl  prueba  SQL > create table prueba(
+                                       -> nombre varchar(50))
+                                       -> engine = memory;
+Query OK, 0 rows affected (0.0987 sec)
+ MySQL  JORGE-DLA:3306 ssl  prueba  SQL > show create table prueba;
++--------+--------------------------------------------------------------------------------------------------------------------------------+
+| Table  | Create Table                                                                                                                   |
++--------+--------------------------------------------------------------------------------------------------------------------------------+
+| prueba | CREATE TABLE `prueba` (
+  `nombre` varchar(50) DEFAULT NULL
+) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++--------+--------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0015 sec)
+ MySQL  JORGE-DLA:3306 ssl  prueba  SQL >

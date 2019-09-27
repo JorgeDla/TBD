@@ -1,0 +1,241 @@
+1 row in set (0.0012 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> add rfc varchar(15) not null after apellidos;
+Query OK, 0 rows affected (1.2764 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                   |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `apellidos` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> rename nombre nombres;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nombres' at line 2
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos rename nombre to nombres;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to nombres' at line 1
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos rename nombre to nombres;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to nombres' at line 1
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos rename column nombre to nombres;
+Query OK, 0 rows affected (0.1551 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                    |
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellidos` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> rename column apellidos to apellido_pat;
+Query OK, 0 rows affected (0.1356 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                       |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0010 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> add apellido_mat varchar(50) not null after apellido_pat;
+Query OK, 0 rows affected (1.0704 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                                                              |
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `apellido_mat` varchar(50) NOT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> modify apellido_mat varchar(50);
+Query OK, 0 rows affected (1.2459 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                                                                  |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `apellido_mat` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> add basura int;
+Query OK, 0 rows affected (1.2454 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                                                                                                   |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `apellido_mat` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  `basura` int(11) DEFAULT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumos
+                                      -> ;
+ERROR: 1146 (42S02): Table 'eva_1.alumos' doesn't exist
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> drop basura;
+Query OK, 0 rows affected (1.4637 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumos ;
+ERROR: 1146 (42S02): Table 'eva_1.alumos' doesn't exist
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                                                                  |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `apellido_mat` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> drop no_control;
+Query OK, 10 rows affected (1.3519 sec)
+
+Records: 10  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                  |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `apellido_mat` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0008 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> add no_control int not null auto_increment key;
+Query OK, 0 rows affected (1.5318 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos modify no_control int not null auto_increment key first;
+ERROR: 1068 (42000): Multiple primary key defined
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> drop no_control;
+Query OK, 10 rows affected (1.6578 sec)
+
+Records: 10  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> add no_control int not null auto_increment first;
+ERROR: 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos  add no_control int not null first;
+Query OK, 0 rows affected (2.0201 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos
+                                      -> add primary key(no_control);
+ERROR: 1062 (23000): Duplicate entry '0' for key 'PRIMARY'
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from alumnos;
++------------+---------+--------------+--------------+-----+------------+
+| no_control | nombres | apellido_pat | apellido_mat | rfc | fecha_nac  |
++------------+---------+--------------+--------------+-----+------------+
+|          0 | JUAN    | NULL         |              |     | 0000-00-00 |
+|          0 | JORGE   | NULL         |              |     | 0000-00-00 |
+|          0 | RAUL    | NULL         |              |     | 0000-00-00 |
+|          0 | NICOLAS | NULL         |              |     | 0000-00-00 |
+|          0 | PANCHO  | NULL         |              |     | 0000-00-00 |
+|          0 | ANA     | NULL         |              |     | 0000-00-00 |
+|          0 | ROBERTO | NULL         |              |     | 0000-00-00 |
+|          0 | LUIS    | NULL         |              |     | 0000-00-00 |
+|          0 | RUBEN   | NULL         |              |     | 0000-00-00 |
+|          0 | LUIS    | NULL         |              |     | 0000-00-00 |
++------------+---------+--------------+--------------+-----+------------+
+10 rows in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > delete from alumnos
+                                      -> where no_control = 0;
+Query OK, 10 rows affected (0.1858 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from alumnos;
+Empty set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos add primary key(no_control);
+Query OK, 0 rows affected (1.2148 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from alumnos;
+Empty set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos modify no_control int not null auto_increment key first;
+ERROR: 1068 (42000): Multiple primary key defined
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > alter table alumnos modify no_control int not null auto_increment first;
+Query OK, 0 rows affected (1.0217 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                                                                |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellido_pat` varchar(50) DEFAULT NULL,
+  `apellido_mat` varchar(50) DEFAULT NULL,
+  `rfc` varchar(15) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from alumnos;
+Empty set (0.0008 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL >

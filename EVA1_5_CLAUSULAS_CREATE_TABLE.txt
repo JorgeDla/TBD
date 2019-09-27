@@ -1,0 +1,166 @@
+Microsoft Windows [Versión 10.0.17134.950]
+(c) 2018 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Jorge>mysqlsh
+MySQL Shell 8.0.17
+
+Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \connect --mc jorge@JORGE-DLA
+Creating a Classic session to 'jorge@JORGE-DLA'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 18
+Server version: 8.0.17 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  JORGE-DLA:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  JORGE-DLA:3306 ssl  SQL > use eva_1;
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > desc paises;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| nombre    | varchar(50) | YES  |     | NULL    |       |
+| poblacion | int(11)     | YES  |     | NULL    |       |
+| idioma    | varchar(20) | YES  |     | NULL    |       |
+| codigo    | int(11)     | YES  |     | NULL    |       |
+| fecha_ind | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.0012 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from paises;
++--------+-----------+--------+--------+-----------+
+| nombre | poblacion | idioma | codigo | fecha_ind |
++--------+-----------+--------+--------+-----------+
+| NULL   |      NULL | NULL   |   NULL | NULL      |
+| NULL   |      NULL | NULL   |   NULL | NULL      |
++--------+-----------+--------+--------+-----------+
+2 rows in set (0.0013 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > create table country(
+                                      -> name varchar(50) defaul 'México',
+                                      -> population int default 1);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'defaul 'México',
+population int default 1)' at line 2
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > create table country(
+                                      -> name varchar(50) default 'México',
+                                      -> population int default 1);
+Query OK, 0 rows affected (1.1764 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into country
+                                      -> values();
+Query OK, 1 row affected (0.1070 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from country;
++--------+------------+
+| name   | population |
++--------+------------+
+| México |          1 |
++--------+------------+
+1 row in set (0.0004 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into country
+                                      -> ('Camargo')
+                                      ->
+                                      ->
+                                      -> values;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Camargo')
+values' at line 2
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into country (name)
+                                      -> values ('Camargo');
+Query OK, 1 row affected (0.1665 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from country;
++---------+------------+
+| name    | population |
++---------+------------+
+| México  |          1 |
+| Camargo |          1 |
++---------+------------+
+2 rows in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into country (name)
+                                      -> values('Camargo');
+Query OK, 1 row affected (0.1249 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from country;
++---------+------------+
+| name    | population |
++---------+------------+
+| México  |          1 |
+| Camargo |          1 |
+| Camargo |          1 |
++---------+------------+
+3 rows in set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > create table materias(
+                                      -> nombre varchar(50) default 'TDB' unique
+                                      -> , creditos int default 5);
+Query OK, 0 rows affected (0.5543 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL >
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into materias(
+                                      -> nombre)
+                                      -> values('POO'), ('Cálculo'),('Cálculo 2'),('EDD');
+Query OK, 4 rows affected (0.1936 sec)
+
+Records: 4  Duplicates: 0  Warnings: 0
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from materias;
++-----------+----------+
+| nombre    | creditos |
++-----------+----------+
+| POO       |        5 |
+| Cálculo   |        5 |
+| Cálculo 2 |        5 |
+| EDD       |        5 |
++-----------+----------+
+4 rows in set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into materias (nombre)
+                                      -> values('POO');
+ERROR: 1062 (23000): Duplicate entry 'POO' for key 'nombre'
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from materias;
++-----------+----------+
+| nombre    | creditos |
++-----------+----------+
+| POO       |        5 |
+| Cálculo   |        5 |
+| Cálculo 2 |        5 |
+| EDD       |        5 |
++-----------+----------+
+4 rows in set (0.0005 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into materias
+                                      -> values ('FBD',10);
+Query OK, 1 row affected (0.1703 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from materias;
++-----------+----------+
+| nombre    | creditos |
++-----------+----------+
+| POO       |        5 |
+| Cálculo   |        5 |
+| Cálculo 2 |        5 |
+| EDD       |        5 |
+| FBD       |       10 |
++-----------+----------+
+5 rows in set (0.0006 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into materias
+                                      -> values(null, null);
+Query OK, 1 row affected (0.1961 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > select * from materias;
++-----------+----------+
+| nombre    | creditos |
++-----------+----------+
+| POO       |        5 |
+| Cálculo   |        5 |
+| Cálculo 2 |        5 |
+| EDD       |        5 |
+| FBD       |       10 |
+| NULL      |     NULL |
++-----------+----------+
+6 rows in set (0.0004 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > create table carreras(nombre varchar(50) unique  not null);
+Query OK, 0 rows affected (1.8450 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into carreras
+                                      -> values (null);
+ERROR: 1048 (23000): Column 'nombre' cannot be null
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into carreras
+                                      -> values ();
+ERROR: 1364 (HY000): Field 'nombre' doesn't have a default value
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into carreras values ('INFORMÁTICA');
+Query OK, 1 row affected (0.1968 sec)
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL > insert into carreras values ('INFORMÁTICA');
+ERROR: 1062 (23000): Duplicate entry 'INFORMÁTICA' for key 'nombre'
+ MySQL  JORGE-DLA:3306 ssl  eva_1  SQL >
